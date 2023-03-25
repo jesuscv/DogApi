@@ -4,14 +4,14 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-object RetrofitService {
-    val clientApi : ApiClient by lazy {
+object RetrofitClient {
+    val clientApi : ApiService by lazy {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://dog.ceo/api/")
+            .baseUrl("https://rickandmortyapi.com/api/")
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
 
-        return@lazy retrofit.create(ApiClient::class.java)
+        return@lazy retrofit.create(ApiService::class.java)
     }
 }

@@ -21,26 +21,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var adapter: PartAdapter
-
-    private fun loadBreedsList() {
-        GlobalScope.launch(Dispatchers.Main) {
-            val webResponse = RetrofitService.clientApi.getBreedsAsync().await()
-
-            if (webResponse.isSuccessful) {
-                val breedsList : List<Breeds>? = webResponse.body()
-                breedsList?.toString()?.let { Log.d("LIST", it) }
-
-                adapter.partItemList = breedsList ?: listOf()
-
-                adapter.notifyDataSetChanged()
-            } else {
-                Log.d("error", "Error ${webResponse.code()}")
-                Toast.makeText(this@MainActivity, "Error ${webResponse.code()}", Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

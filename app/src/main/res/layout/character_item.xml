@@ -5,7 +5,7 @@
     <data>
         <variable
             name="item"
-            type="com.jecruzv.dogapi.Breeds" />
+            type="com.jecruzv.dogapi.Characters" />
     </data>
 
     <LinearLayout
